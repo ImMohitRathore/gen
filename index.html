@@ -1,0 +1,146 @@
+
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="./style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css"> 
+	<link rel="stylesheet" href="path/to/material-design-iconic-font/css/material-design-iconic-font.min.css">
+</head>
+<body>
+	
+	<div class="main">
+	
+					   
+			   			<audio src= "./Music/10.mp3"></audio>
+					<div class="slider"></div>
+					<div class="btn">
+                      <p id="p"></p>
+					<button id= "past" ><i class="zmdi zmdi-fast-rewind"></i></button>
+					<button id ="play" > <i class="zmdi zmdi-caret-right-circle"></i> </button>
+					<button id = "next  " onclick="nexxt()"><i class="zmdi zmdi-fast-forward"></i></button>
+					</div>
+				 
+	
+			</div>
+			<script >
+				   const play = document.getElementById("play");
+                   const music = document.querySelector("audio");
+				   const past = document.getElementById("past");
+				//    const next = document.getElementById("next");
+                   let  songIndex = 20;
+
+                   
+
+
+ let data = [
+                    {
+                        song : "1.mp3"
+                    },
+                    {
+                        song : "2.mp3"
+                    }, {
+                        song : "3.mp3"
+                    }, {
+                        song : "4.mp3"
+                    }, {
+                        song : "5.mp3"
+                    }, {
+                        song : "6.mp3"
+                    }, {
+                        song : "7.mp3"
+                    }, {
+                        song : "8.mp3"
+                    }, {
+                        song : "9.mp3"
+                    }, {
+                        song : "10.mp3"
+                    }, {
+                        song : "11.mp3"
+                    }, {
+                        song : "12.mp3"
+                    }, {
+                        song : "13.mp3"
+                    }, {
+                        song : "14.mp3"
+                    }, {
+                        song : "15.mp3"
+                    }, {
+                        song : "16.mp3"
+                    }, {
+                        song : "17.mp3"
+                    }, {
+                        song : "18.mp3"
+                    }, {
+                        song : "19.mp3"
+                    }, {
+                        song : "20.mp3"
+                    }, {
+                        song : "21.mp3"
+                    }, {
+                        song : "22.mp3"
+                    }, {
+                        song : "23.mp3"
+                    }, {
+                        song : "24.mp3"
+                    }, {
+                        song : "25.mp3"
+                    }, {
+                        song : "27.mp3"
+                    },
+                ]     
+
+
+
+let isplaying = false ; 
+// // "for play "
+const playMusic  = ()=>{
+    isplaying = true;
+    music.play();
+}
+const pauseMusic=()=>{
+    isplaying = false;
+    music.pause();
+}
+
+play.addEventListener(
+    "click",()=>{
+        isplaying ?  pauseMusic() : playMusic();
+    }
+)
+
+                
+//   update the song detail
+  const loadsong =(data)=>{
+  music.src = `Music/${data.song}`}      
+//   loadsong(data[songIndex])
+
+// next song 
+
+past.addEventListener("click",()=>{
+    songIndex = (songIndex -1 + data.length) % data.length;
+    loadsong(data[songIndex])
+    playMusic()
+});
+
+
+// next song onclick function
+const nexxt = ()=>{
+    
+ songIndex = (songIndex +1 )% data.length;
+ loadsong(data[songIndex])
+ playMusic()
+}
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>
